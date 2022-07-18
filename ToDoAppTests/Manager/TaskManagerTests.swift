@@ -12,14 +12,16 @@ class TaskManagerTests: XCTestCase {
     
     var sut: TaskManager!
     
-    override func setUp() {
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         sut = TaskManager()
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         sut = nil
+        try super.tearDownWithError()
     }
-
+    
     func testInitTaskCountZero() {
         // Arrange
         let zero: Int = 0
@@ -42,20 +44,82 @@ class TaskManagerTests: XCTestCase {
         XCTAssertEqual(sut.taskCount, 1)
     }
     
-    func testCurrentTaskSucces() {
+    func testCheckTaskSuccess() {
         // Arrange
         let task = TaskModel(title: "Foo")
         sut.add(task: task)
-        let returnedValue = sut.currentTask(at: 0)
+        let returnedValue = sut.checkTask(at: 0)
         // Assert
-        XCTAssertNotNil(task.title)
-        XCTAssertEqual(task.title, returnedValue?.title)
+        XCTAssertEqual(task, returnedValue)
     }
     
-    func testCurrentTaskFailed() {
+    func testCheckTaskFailed() {
         // Arrange
-        let returnedNil = sut.currentTask(at: 0)
+        let returnedNil = sut.checkTask(at: 0)
         // Assert
-        XCTAssertEqual(returnedNil?.title, nil)
+        XCTAssertEqual(returnedNil, nil)
+    }
+    
+    func testAddDoneTaskSuccess() {
+        // Arrange
+        let task = TaskModel(title: "Foo")
+        sut.add(task: task)
+        sut.addDoneTask(at: 0)
+        // Assert
+        XCTAssertEqual(sut.doneTaskCount, 1)
+        XCTAssertEqual(sut.taskCount, 0)
+    }
+    
+    func testCheckTaskRemoved() {
+        // Arrange
+        let firstTask = TaskModel(title: "Foo")
+        let secondTask = TaskModel(title: "Bar")
+        sut.add(task: firstTask)
+        sut.add(task: secondTask)
+        sut.addDoneTask(at: 0)
+        let result = sut.checkTask(at: 0)
+        // Assert
+        XCTAssertEqual(result, secondTask)
+    }
+    
+    func testDoneTaskSuccess() {
+        // Arrange
+        let task = TaskModel(title: "Foo")
+        sut.add(task: task)
+        sut.addDoneTask(at: 0)
+        let result = sut.checkDoneTask(at: 0)
+        // Assert
+        XCTAssertEqual(result, task)
+        
+    }
+    
+    func testDoneTaskFailed() {
+        XCTAssertNil(sut.checkDoneTask(at: 0))
+    }
+    
+    func testRemoveAllTasksSuccess() {
+        // Arrange
+        sut.add(task: TaskModel(title: "Foo"))
+        sut.add(task: TaskModel(title: "Bar"))
+        // Act
+        sut.addDoneTask(at: 0)
+        sut.removeAllTasks()
+        // Assert
+        XCTAssertNil(sut.checkTask(at: 0))
+        XCTAssertNil(sut.checkDoneTask(at: 0))
+        XCTAssertTrue(sut.taskCount == 0)
+        XCTAssertTrue(sut.doneTaskCount == 0)
+    }
+    
+    func testAddTheSameElementIsNotPossible() {
+        // Arrange
+        let title = TaskModel(title: "Foo")
+        let theSameTitle = TaskModel(title: "Foo")
+        // Act
+        sut.add(task: title)
+        sut.add(task: theSameTitle)
+        // Assert
+        XCTAssertTrue(sut.taskCount == 1)
+        
     }
 }
