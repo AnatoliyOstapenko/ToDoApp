@@ -9,13 +9,9 @@ import Foundation
 
 class TaskManager {
     
-    var taskCount: Int {
-        return tasks.count
-    }
-    var doneTaskCount: Int {
-        return doneTasks.count
-    }
-    
+    var taskCount: Int { return tasks.count }
+    var doneTaskCount: Int { return doneTasks.count }
+
     private var tasks: [TaskModel] = []
     private var doneTasks: [TaskModel] = []
     
