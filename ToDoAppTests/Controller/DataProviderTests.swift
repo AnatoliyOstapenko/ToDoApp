@@ -33,7 +33,7 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(tableView?.numberOfSections, 2)
     }
     
-    func testNumberOfRowsIsSectionSuccess() {
+    func testNumberOfRowsInSectionForTasks() {
         // Arrange
         let task = TaskModel(title: "Foo")
         let nextTask = TaskModel(title: "Bar")
@@ -46,6 +46,25 @@ class DataProviderTests: XCTestCase {
         tableView.reloadData()
         // Assert
         XCTAssertEqual(tableView.numberOfRows(inSection: 0), sut.taskManager?.taskCount)
+    }
+    
+    func testNumberOfRowsInSectionForDoneTasks() {
+        // Arrange
+        let task = TaskModel(title: "Foo")
+        let secondTask = TaskModel(title: "Bar")
+        // Action
+        sut.taskManager?.add(task: task)
+        sut.taskManager?.add(task: secondTask)
+        sut.taskManager?.addDoneTask(at: 0)
+        // Assert
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), sut.taskManager?.taskCount)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), sut.taskManager?.doneTaskCount)
+    }
+    
+    func testNumberOfRowsInSectionFailed() {
+        // Assert
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 0)
+        
     }
 
    
