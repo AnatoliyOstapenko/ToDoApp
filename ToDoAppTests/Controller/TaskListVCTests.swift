@@ -17,7 +17,6 @@ class TaskListVCTests: XCTestCase {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: String(describing: TaskListVC.self))
         sut = vc as? TaskListVC
-        
         sut.loadViewIfNeeded()
     }
 

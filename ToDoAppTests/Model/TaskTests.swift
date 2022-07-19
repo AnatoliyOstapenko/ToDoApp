@@ -17,7 +17,6 @@ class TaskTests: XCTestCase {
         // Assert
         XCTAssertNotNil(task)
         XCTAssertEqual(task.title, "Foo")
-        
     }
     
     func testInitTaskModelTitleAndDiscription() {
