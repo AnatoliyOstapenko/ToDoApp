@@ -42,15 +42,14 @@ extension DataProvider: UITableViewDataSource {
         return Section.allCases.count
     }
     
-    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) -> CustomError? {
-        guard let section = Section(rawValue: indexPath.section), let taskManager = taskManager else { return .invalidSection }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section), let taskManager = taskManager else { return }
         
         switch section {
         case .todo: taskManager.checkTask(at: indexPath.row)
         case .done: taskManager.uncheckTask(at: indexPath.row)
         }
         tableView.reloadData()
-        return nil
     }
 }
 

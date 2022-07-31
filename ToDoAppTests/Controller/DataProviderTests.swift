@@ -138,7 +138,7 @@ class DataProviderTests: XCTestCase {
         let task = TaskModel(title: "Foo")
         // Act
         sut.taskManager?.add(task: task)
-        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 1))
+        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 0))
         // Assert
         XCTAssertEqual(sut.taskManager?.taskCount, 0)
         XCTAssertEqual(sut.taskManager?.doneTaskCount, 1)
@@ -150,7 +150,7 @@ class DataProviderTests: XCTestCase {
         // Act
         sut.taskManager?.add(task: task)
         sut.taskManager?.checkTask(at: 0)
-        tableView.reloadData()
+       // tableView.reloadData()
         tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 1))
         // Assert
         XCTAssertEqual(sut.taskManager?.taskCount, 1)
