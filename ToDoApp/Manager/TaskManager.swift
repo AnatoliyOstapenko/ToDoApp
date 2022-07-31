@@ -19,21 +19,28 @@ class TaskManager {
         if !tasks.contains(task) { tasks.append(task) }
     }
     
-    func checkTask(at index: Int) -> TaskModel? {
+    func task(at index: Int) -> TaskModel? {
         if !tasks.isEmpty {
             return tasks[index]
         }
         return nil
     }
     
-    func addDoneTask(at index: Int) {
+    func checkTask(at index: Int) {
         if !tasks.isEmpty {
             let doneTask = tasks.remove(at: index)
             doneTasks.append(doneTask)
         }
     }
     
-    func checkDoneTask(at index: Int) -> TaskModel? {
+    func uncheckTask(at index: Int) {
+        if !doneTasks.isEmpty {
+            let undoneTask = doneTasks.remove(at: index)
+            tasks.append(undoneTask)
+        }
+    }
+    
+    func doneTask(at index: Int) -> TaskModel? {
         if !doneTasks.isEmpty {
             return doneTasks[index]
         }

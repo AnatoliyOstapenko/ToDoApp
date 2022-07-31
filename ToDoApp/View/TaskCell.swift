@@ -8,6 +8,10 @@
 import UIKit
 
 class TaskCell: UITableViewCell {
+    
+    func configure(_ task: TaskModel) {
+        print("configure method is invoked")
+    }
 
 
 }

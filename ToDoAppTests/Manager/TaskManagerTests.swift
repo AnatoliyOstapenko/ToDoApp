@@ -48,14 +48,14 @@ class TaskManagerTests: XCTestCase {
         // Arrange
         let task = TaskModel(title: "Foo")
         sut.add(task: task)
-        let returnedValue = sut.checkTask(at: 0)
+        let returnedValue = sut.task(at: 0)
         // Assert
         XCTAssertEqual(task, returnedValue)
     }
     
     func testCheckTaskFailed() {
         // Arrange
-        let returnedNil = sut.checkTask(at: 0)
+        let returnedNil = sut.task(at: 0)
         // Assert
         XCTAssertEqual(returnedNil, nil)
     }
@@ -64,7 +64,7 @@ class TaskManagerTests: XCTestCase {
         // Arrange
         let task = TaskModel(title: "Foo")
         sut.add(task: task)
-        sut.addDoneTask(at: 0)
+        sut.checkTask(at: 0)
         // Assert
         XCTAssertEqual(sut.doneTaskCount, 1)
         XCTAssertEqual(sut.taskCount, 0)
@@ -76,8 +76,8 @@ class TaskManagerTests: XCTestCase {
         let secondTask = TaskModel(title: "Bar")
         sut.add(task: firstTask)
         sut.add(task: secondTask)
-        sut.addDoneTask(at: 0)
-        let result = sut.checkTask(at: 0)
+        sut.checkTask(at: 0)
+        let result = sut.task(at: 0)
         // Assert
         XCTAssertEqual(result, secondTask)
     }
@@ -86,15 +86,15 @@ class TaskManagerTests: XCTestCase {
         // Arrange
         let task = TaskModel(title: "Foo")
         sut.add(task: task)
-        sut.addDoneTask(at: 0)
-        let result = sut.checkDoneTask(at: 0)
+        sut.checkTask(at: 0)
+        let result = sut.doneTask(at: 0)
         // Assert
         XCTAssertEqual(result, task)
         
     }
     
     func testDoneTaskFailed() {
-        XCTAssertNil(sut.checkDoneTask(at: 0))
+        XCTAssertNil(sut.doneTask(at: 0))
     }
     
     func testRemoveAllTasksSuccess() {
@@ -102,11 +102,11 @@ class TaskManagerTests: XCTestCase {
         sut.add(task: TaskModel(title: "Foo"))
         sut.add(task: TaskModel(title: "Bar"))
         // Act
-        sut.addDoneTask(at: 0)
+        sut.checkTask(at: 0)
         sut.removeAllTasks()
         // Assert
-        XCTAssertNil(sut.checkTask(at: 0))
-        XCTAssertNil(sut.checkDoneTask(at: 0))
+        XCTAssertNil(sut.task(at: 0))
+        XCTAssertNil(sut.doneTask(at: 0))
         XCTAssertTrue(sut.taskCount == 0)
         XCTAssertTrue(sut.doneTaskCount == 0)
     }

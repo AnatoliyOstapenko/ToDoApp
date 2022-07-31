@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC8795952896838900A95385 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8795942896838900A95385 /* CustomError.swift */; };
+		BC879598289692BC00A95385 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC879597289692BC00A95385 /* AlertVC.swift */; };
+		BC87959A289694F200A95385 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC879599289694F200A95385 /* UIView+Ext.swift */; };
+		BC87959D28969DA700A95385 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87959C28969DA700A95385 /* UIViewController+Ext.swift */; };
 		BCA1E500288318FB00242800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1E4FF288318FB00242800 /* AppDelegate.swift */; };
 		BCA1E502288318FB00242800 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1E501288318FB00242800 /* SceneDelegate.swift */; };
 		BCA1E504288318FB00242800 /* TaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1E503288318FB00242800 /* TaskListVC.swift */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC8795942896838900A95385 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		BC879597289692BC00A95385 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		BC879599289694F200A95385 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		BC87959C28969DA700A95385 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		BCA1E4FC288318FB00242800 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1E4FF288318FB00242800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1E501288318FB00242800 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC8795962896928700A95385 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BC8795942896838900A95385 /* CustomError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BC87959B289694F900A95385 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC879599289694F200A95385 /* UIView+Ext.swift */,
+				BC87959C28969DA700A95385 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BCA1E4F3288318FA00242800 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +150,8 @@
 				BCA1E55A2887033700242800 /* Manager */,
 				BCA1E55B2887034000242800 /* View */,
 				BCA1E501288318FB00242800 /* SceneDelegate.swift */,
+				BC87959B289694F900A95385 /* Extensions */,
+				BC8795962896928700A95385 /* Utilities */,
 				BCA1E505288318FB00242800 /* Main.storyboard */,
 				BCA1E508288318FC00242800 /* Assets.xcassets */,
 				BCA1E50A288318FC00242800 /* LaunchScreen.storyboard */,
@@ -209,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				BCA1E5582887032700242800 /* TaskCell.swift */,
+				BC879597289692BC00A95385 /* AlertVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,10 +373,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCA1E53B288418CA00242800 /* TaskManager.swift in Sources */,
+				BC87959A289694F200A95385 /* UIView+Ext.swift in Sources */,
+				BC87959D28969DA700A95385 /* UIViewController+Ext.swift in Sources */,
 				BCA1E504288318FB00242800 /* TaskListVC.swift in Sources */,
 				BCA1E500288318FB00242800 /* AppDelegate.swift in Sources */,
+				BC879598289692BC00A95385 /* AlertVC.swift in Sources */,
 				BCA1E5452885DB5000242800 /* DataProvider.swift in Sources */,
 				BCA1E5592887032800242800 /* TaskCell.swift in Sources */,
+				BC8795952896838900A95385 /* CustomError.swift in Sources */,
 				BCA1E53328831C8B00242800 /* TaskModel.swift in Sources */,
 				BCA1E53728840A6800242800 /* LocationModel.swift in Sources */,
 				BCA1E502288318FB00242800 /* SceneDelegate.swift in Sources */,
