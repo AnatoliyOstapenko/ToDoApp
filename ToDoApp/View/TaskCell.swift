@@ -9,6 +9,8 @@ import UIKit
 
 class TaskCell: UITableViewCell {
     
+    let titleLabel = UILabel()
+    
     func configure(_ task: TaskModel) {
         print("configure method is invoked")
     }
